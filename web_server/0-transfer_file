@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# Writing a Bash script that transfers a file from a client to a server
-
-if [ "$4" == "" ]
-then 
+# comment
+if [ $# -lt 4 ]; then
     echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
 else
-    host="$3@$2:~/"
-    scp -o StrictHostKeyChecking=no -i $4 $1 $host
+    file="$1"
+    host="$2"
+    username="$3"
+    private_key="$4"
+    scp -i "$private_key" -o StrictHostKeyChecking=no "$file" "$username@$host:~/"
 fi
