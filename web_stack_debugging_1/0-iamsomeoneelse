@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# This script writes a Bash script that accepts one argument
-# the script should run the whoami command under the user passed as an argument
-sudo -u "$1" whoami
+# Bash script that configures a server to listen on port 80
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+service nginx restart
